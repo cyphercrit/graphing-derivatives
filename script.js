@@ -27,18 +27,12 @@ function parseMathInput() {
     let latex = mathField.latex();
     console.log("Parsed LaTeX:", latex);
 
-    // convert to expression
     let expression = latex
-        .replace(/([0-9])([a-zA-Z])/g, '$1*$2')                     // Adds * between number and variable (e.g., 2x -> 2*x)
-        .replace(/([0-9])\\left/g, '$1(')                            // Convert 2\left to 2( 
-        .replace(/\\left/g, '')                                      // Remove \left
-        .replace(/\\right/g, '')                                     // Remove \right
-        .replace(/([0-9])\\([a-zA-Z]+)/g, '$1*Math.$2')            // Converts (int)\sin to int * Math.sin
-        .replace(/\\sin/g, 'Math.sin')                               // Converts \sin to Math.sin
-        .replace(/\\cos/g, 'Math.cos')                               // Converts \cos to Math.cos
-        .replace(/\\tan/g, 'Math.tan')                               // Converts \tan to Math.tan
-        .replace(/([0-9])\(/g, '$1*(');                              // Adds * between number and parentheses (e.g., 2( -> 2*( )
-    
+        .replace(/\\right+|\\left+/g, '') // handles \left and \right \\sin\s*\((.?[0-9].?\*x)
+        .replace(/(.?[0-9].?)(x)/g, '$1*$2') // handles num * x
+        .replace(/\\sin\s*(\.?[0-9]*?\.?[0-9]*?\*?x)/g, 'math.sin($1)') // handles sin without parentheses
+        .replace(/\\sin+\s*\((.*?)\)/g, 'math.sin($1)') // handles sin with parentheses
+        .replace(/\\cdot/g, '*') // handles latex multiplication symbol
 
     console.log("Parsed expression:", expression)
     return expression;
