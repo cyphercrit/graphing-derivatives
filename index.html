@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
     <link rel="stylesheet" href="./style.css?v2.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js"></script>
     <script src="./script.js" defer></script>
     <title>Graphing Derivatives</title>
 </head>
 <body>
-    <section class="grapher">
-        <h2>Derivative Grapher</h2>
-        <div class="input">
-            <input type="text" class="input-field" id="functionInput" placeholder="Enter a function to graph">
-            <button class="btn">Graph!</button>
+    <section class="header">
+        <div class="title">
+            <h2>Derivative Grapher</h2>
         </div>
-        <div class="graph">
-            <canvas id="derivativeChart"></canvas>
+        <div class="input">
+            <div id="function-decl"><p><b>f(x)=</b></p></div>
+            <span id="mathquill-input"></span>
+            <button class="btn" id="graphBtn">Graph!</button>
         </div>
     </section>
+    <section class="grapher">
+        <div id="jxgbox" class="jxgbox"></div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <p>Copyright &#169; 2024 Caden Jurkovski. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

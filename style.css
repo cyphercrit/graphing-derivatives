@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FAF9F6;
+    overflow: auto;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+#function-decl,
+#mathquill-input {
+    background-color: white;
+    height: 3rem;
+    border: 1px solid #d2d2d2;
+    border-radius: 0.5rem;
+    padding: 0 0.75rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-align: left;
+}
+
+#function-decl {
+    width: 4rem;
+}
+
+#mathquill-input,
+.mq-editable-field {
+    min-width: 20rem;
+}
+
+.mq-editable-field {
+    display: inline-flex;
+    align-items: center;
+}
+
+.mq-root-block {
+    padding: 0;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #333;
+}
+
+.grapher {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-grow: 1;
+}
+
+.jxgbox {
+    width: 90vh;
+    height: 60vh;
+    max-width: 100%;
+    max-height: 80vh;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    color: #666;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .jxgbox {
+        width: 90vw;
+        height: 50vh;
+    }
+
+    #mathquill-input,
+    .mq-editable-field {
+        min-width: 15rem;
+    }
+}
