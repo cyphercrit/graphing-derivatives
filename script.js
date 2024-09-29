@@ -2,7 +2,7 @@ const graphBtn = document.getElementById("graphBtn");
 
 // initialize the graphing board
 const board = JXG.JSXGraph.initBoard('jxgbox', {
-    boundingbox: [-7.5, 5, 7.5, -5],
+    boundingbox: [-6, 4, 6, -4],
     axis: true,
     grid: {
         majorStep: 1,
@@ -26,17 +26,32 @@ let mathField = MQ.MathField(mathFieldSpan, {
 function parseMathInput() {
     let latex = mathField.latex();
     console.log("Parsed LaTeX:", latex);
-    return latex;
+
+    // convert to expression
+    let expression = latex
+        .replace(/([0-9])([a-zA-Z])/g, '$1*$2')                     // Adds * between number and variable (e.g., 2x -> 2*x)
+        .replace(/([0-9])\\left/g, '$1(')                            // Convert 2\left to 2( 
+        .replace(/\\left/g, '')                                      // Remove \left
+        .replace(/\\right/g, '')                                     // Remove \right
+        .replace(/([0-9])\\([a-zA-Z]+)/g, '$1*Math.$2')            // Converts (int)\sin to int * Math.sin
+        .replace(/\\sin/g, 'Math.sin')                               // Converts \sin to Math.sin
+        .replace(/\\cos/g, 'Math.cos')                               // Converts \cos to Math.cos
+        .replace(/\\tan/g, 'Math.tan')                               // Converts \tan to Math.tan
+        .replace(/([0-9])\(/g, '$1*(');                              // Adds * between number and parentheses (e.g., 2( -> 2*( )
+    
+
+    console.log("Parsed expression:", expression)
+    return expression;
 }
 
 // handles graphing, ran whenever listeners are triggered
 function handleGraphing() {
-    let latex = parseMathInput();
-    console.log("Graphing function:", latex);
+    let expression = parseMathInput();
+    console.log("Graphing function:", expression);
     try {
-        board.removeObject(board.objects.functionGraph); // removes any previous graph
+        board.removeObject(board.objects['functionGraph']); // removes any previous graph ** needs work
         
-        let f = board.jc.snippet(latex, true, 'x', true);
+        let f = new Function('x', 'return ' + expression);
         board.create('functiongraph', [f], {name: 'functionGraph'}); // graphs function
 
         console.log("Graph created successfuly");
