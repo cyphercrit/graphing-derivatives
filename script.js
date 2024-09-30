@@ -29,12 +29,12 @@ function parseMathInput() {
 
     let expression = latex
         .replace(/\\right+|\\left+/g, '') // handles \left and \right \\sin\s*\((.?[0-9].?\*x)
-        .replace(/(.?[0-9].?)(x)/g, '$1*$2') // handles num * x
+        .replace(/(\.?[0-9]\.?)(x)/g, '$1*$2') // handles num * x
         .replace(/\\sin\s*(\.?[0-9]*?\.?[0-9]*?\*?x)/g, 'math.sin($1)') // handles sin without parentheses
         .replace(/\\sin+\s*\((.*?)\)/g, 'math.sin($1)') // handles sin with parentheses
         .replace(/\\cdot/g, '*') // handles latex multiplication symbol
 
-    console.log("Parsed expression:", expression)
+    console.log("Parsed expression:", expression);
     return expression;
 }
 
