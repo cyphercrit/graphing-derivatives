@@ -1,52 +1,48 @@
 const graphBtn = document.getElementById("graphBtn");
 
 // initialize the graphing board
-const board = JXG.JSXGraph.initBoard('jxgbox', {
-    boundingbox: [-6, 4, 6, -4],
-    axis: true,
-    grid: {
-        majorStep: 1,
-    },
-    showCopyright: false,
-    showNavigation: true,
-    autoPosition: true
+let elt = document.getElementById('board');
+let board = Desmos.GraphingCalculator(elt, {
+    keypad: false,
+    expressions: false,
+    settingsMenu: false,
+    zoomButtons: false,
 });
 
-// initialize mathquill
+// initialize mathquill and http elements
 let MQ = MathQuill.getInterface(2);
 let mathFieldSpan = document.getElementById('mathquill-input');
 let fx = document.getElementById('function-decl');
+let originalid = document.getElementById('original');
+let derivativeid = document.getElementById('derivative')
 let fxField = MQ.StaticMath(fx);
 fxField.latex('f(x)=');
+let originalLegend = MQ.StaticMath(originalid);
+originalLegend.latex('f(x)=');
+let derivativeLegend = MQ.StaticMath(derivativeid);
+derivativeLegend.latex('f\'(x)=');
 let mathField = MQ.MathField(mathFieldSpan, {
     spaceBehavesLikeTab: true
 });
 
 // parses input into latex code
 function parseMathInput() {
-    let latex = mathField.latex();
-    console.log("Parsed LaTeX:", latex);
-
-    let expression = latex
-        .replace(/\\right+|\\left+/g, '') // handles \left and \right \\sin\s*\((.?[0-9].?\*x)
-        .replace(/(\.?[0-9]\.?)(x)/g, '$1*$2') // handles num * x
-        .replace(/\\sin\s*(\.?[0-9]*?\.?[0-9]*?\*?x)/g, 'math.sin($1)') // handles sin without parentheses
-        .replace(/\\sin+\s*\((.*?)\)/g, 'math.sin($1)') // handles sin with parentheses
-        .replace(/\\cdot/g, '*') // handles latex multiplication symbol
-
-    console.log("Parsed expression:", expression);
-    return expression;
+    let originalFunction = mathField.latex();
+    console.log("Parsed expression:", originalFunction);
+    return originalFunction;
 }
 
 // handles graphing, ran whenever listeners are triggered
 function handleGraphing() {
-    let expression = parseMathInput();
-    console.log("Graphing function:", expression);
+    let originalFunction = parseMathInput();
+    let firstDerivative = '\\frac{d}{dx}('.concat(originalFunction).concat(')');
+    console.log(firstDerivative);
+    console.log("Graphing function:", originalFunction);
     try {
-        board.removeObject(board.objects['functionGraph']); // removes any previous graph ** needs work
+        board.setExpressions([]); // removes any previous graphs
         
-        let f = new Function('x', 'return ' + expression);
-        board.create('functiongraph', [f], {name: 'functionGraph'}); // graphs function
+        board.setExpression({id: 'originalFunction', latex: originalFunction, color: 'red'});
+        board.setExpression({id: 'firstDerivative', latex: firstDerivative, color: 'blue'});
 
         console.log("Graph created successfuly");
     } catch (error) {

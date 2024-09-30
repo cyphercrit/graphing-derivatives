@@ -16,11 +16,22 @@
         <div class="input">
             <div id="function-decl"><p><b>f(x)=</b></p></div>
             <span id="mathquill-input"></span>
+            <!-- <input type="text" placeholder="# derivatives (default: 1)" class="derNumber"> -->
             <button class="btn" id="graphBtn">Graph!</button>
         </div>
     </section>
     <section class="grapher">
-        <div id="jxgbox" class="jxgbox"></div>
+        <div id="board" class="board"></div>
+        <div class="legend">
+            <div class="legend-item">
+                <span id="original">f(x)=</span>
+                <span class="color-box" style="background-color: red;"></span>
+            </div>
+            <div class="legend-item">
+                <span id="derivative">f'(x)=</span>
+                <span class="color-box" style="background-color: blue;"></span>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -28,10 +39,9 @@
             <p>Copyright &#169; 2024 Caden Jurkovski. All Rights Reserved.</p>
         </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.1.1/math.min.js"></script>
+    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
     <script src="./script.js"></script>
 </body>
 </html>
