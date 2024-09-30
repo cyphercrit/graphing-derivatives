@@ -6,7 +6,10 @@ let board = Desmos.GraphingCalculator(elt, {
     keypad: false,
     expressions: false,
     settingsMenu: false,
-    zoomButtons: false,
+    zoomButtons: true,
+    border: false,
+    plotImplicits: true,
+    zoomFit: true,
 });
 
 // initialize mathquill and http elements
@@ -22,13 +25,14 @@ originalLegend.latex('f(x)=');
 let derivativeLegend = MQ.StaticMath(derivativeid);
 derivativeLegend.latex('f\'(x)=');
 let mathField = MQ.MathField(mathFieldSpan, {
-    spaceBehavesLikeTab: true
+    spaceBehavesLikeTab: true,
+    autoCommands: 'pi sqrt',
 });
 
 // parses input into latex code
 function parseMathInput() {
     let originalFunction = mathField.latex();
-    console.log("Parsed expression:", originalFunction);
+    // console.log("Parsed expression:", originalFunction);
     return originalFunction;
 }
 
@@ -36,15 +40,15 @@ function parseMathInput() {
 function handleGraphing() {
     let originalFunction = parseMathInput();
     let firstDerivative = '\\frac{d}{dx}('.concat(originalFunction).concat(')');
-    console.log(firstDerivative);
-    console.log("Graphing function:", originalFunction);
+    // console.log(firstDerivative);
+    // console.log("Graphing function:", originalFunction);
     try {
         board.setExpressions([]); // removes any previous graphs
         
-        board.setExpression({id: 'originalFunction', latex: originalFunction, color: 'red'});
-        board.setExpression({id: 'firstDerivative', latex: firstDerivative, color: 'blue'});
+        board.setExpression({id: 'firstDerivative', latex: firstDerivative, color: '#ff3333'});
+        board.setExpression({id: 'originalFunction', latex: originalFunction, color: '#33ecff'});
 
-        console.log("Graph created successfuly");
+        // console.log("Graph created successfuly");
     } catch (error) {
         console.error("Error creating graph:", error);
     }
