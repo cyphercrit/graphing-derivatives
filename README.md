@@ -15,3 +15,4 @@ The Graphing Derivatives application is built using the following technologies:
 3) Latex Integration: [Mathquill API](https://docs.mathquill.com/en/latest/Api_Methods/)
 
 ### License
+MIT License
