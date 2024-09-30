@@ -79,10 +79,10 @@ h2 {
 
 .grapher {
     display: flex;
+    flex-direction: column-reverse;
     justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 2rem 0;
+    align-items: center;
+    margin: 1rem 0;
     width: 100%;
 }
 
@@ -103,10 +103,7 @@ h2 {
 }
 
 .legend {
-    position: absolute;
-    right: 0rem;
-    top: 15rem;
-    width: 50vh;
+    display: flex;
 }
 
 
