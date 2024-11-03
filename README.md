@@ -1,18 +1,40 @@
 # Graphing Derivatives
-![Graphing Derivatives Image](https://i.imgur.com/8tKC4LB.png)
 
-This web application can be used to graph a function and it's first derivative of a function of the format f(x).
+This project is a web application for graphing derivatives built using React, the Desmos graphing libary, and MathQuill for mathematical input. The application allows users to input a function and visualize its graph along with its first derivative.
 
-### Usage
+## Installation
 
-1) Enter a function in the input field using standard mathematical notation. The function should be in the format f(x).
-2) Click the "Graph" button or press enter to generate the graph of the original function and its first derivative.
+1. Clone the repository:
+```sh
+git clone https://github.com/yourusername/graphing-derivatives.git
+cd graphing-derivatives
+```
 
-### Technical
-The Graphing Derivatives application is built using the following technologies:
-1) Frontend: HTML, CSS, and JavaScript
-2) Graphing Library: [Desmos API](https://www.desmos.com/api/v1.9/docs/index.html#document-quickstart)
-3) Latex Integration: [Mathquill API](https://docs.mathquill.com/en/latest/Api_Methods/)
+2. Install the dependencies:
+```sh
+npm install
+```
 
-### License
+## Usage
+To start the development server, run:
+```sh
+npm run dev
+```
+Open your browser and navigate to `http://localhost:5173` to see the application in action.
+
+## Building
+To build the project for production, run:
+```sh
+npm run build
+```
+From here, you can serve the application with a static server.
+
+For example:
+```sh
+serve -s dist
+```
+
+## License
 This project is licensed under the MIT License.
+
+
