@@ -1,18 +1,8 @@
-# Graphing Derivatives
-![Graphing Derivatives Image](https://i.imgur.com/8tKC4LB.png)
+# React + Vite
 
-This web application can be used to graph a function and it's first derivative of a function of the format f(x).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Usage
+Currently, two official plugins are available:
 
-1) Enter a function in the input field using standard mathematical notation. The function should be in the format f(x).
-2) Click the "Graph" button or press enter to generate the graph of the original function and its first derivative.
-
-### Technical
-The Graphing Derivatives application is built using the following technologies:
-1) Frontend: HTML, CSS, and JavaScript
-2) Graphing Library: [Desmos API](https://www.desmos.com/api/v1.9/docs/index.html#document-quickstart)
-3) Latex Integration: [Mathquill API](https://docs.mathquill.com/en/latest/Api_Methods/)
-
-### License
-This project is licensed under the MIT License.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

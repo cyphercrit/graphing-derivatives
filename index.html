@@ -1,47 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
-    <link rel="stylesheet" href="./style.css?v2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css">
-    <title>Graphing Derivatives</title>
-</head>
-<body>
-    <section class="header">
-        <div class="title">
-            <h2>Derivative Grapher</h2>
-        </div>
-        <div class="input">
-            <div id="function-decl"><p><b>f(x)=</b></p></div>
-            <span id="mathquill-input"></span>
-            <!-- <input type="text" placeholder="# derivatives (default: 1)" class="derNumber"> -->
-            <button class="btn" id="graphBtn">Graph!</button>
-        </div>
-    </section>
-    <section class="grapher">
-        <div id="board" class="board"></div>
-        <div class="legend">
-            <div class="legend-item">
-                <span id="original">f(x)-></span>
-                <span class="color-box" style="background-color: #33ecff;"></span>
-            </div>
-            <div class="legend-item">
-                <span id="derivative">f'(x)-></span>
-                <span class="color-box" style="background-color: #ff3333;"></span>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer">
-            <p>Copyright &#169; 2024 Caden Jurkovski.</p>
-        </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js"></script>
-    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
-    <script src="./script.js"></script>
-</body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
