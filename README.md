@@ -6,7 +6,7 @@ This project is a web application for graphing derivatives built using React, th
 
 1. Clone the repository:
 ```sh
-git clone https://github.com/yourusername/graphing-derivatives.git
+git clone https://github.com/cyphercrit/graphing-derivatives
 cd graphing-derivatives
 ```
 
